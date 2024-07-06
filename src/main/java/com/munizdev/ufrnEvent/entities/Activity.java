@@ -2,7 +2,7 @@ package com.munizdev.ufrnEvent.entities;
 
 import jakarta.persistence.*;
 
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class Activity {
@@ -17,6 +17,9 @@ public class Activity {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @ManyToMany(mappedBy = "activities")
+    private Set<Participant> participants = new HashSet<>();
 
     public Activity() {
     }

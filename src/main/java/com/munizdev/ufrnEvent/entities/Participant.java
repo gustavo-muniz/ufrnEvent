@@ -1,11 +1,8 @@
 package com.munizdev.ufrnEvent.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class Participant {
@@ -15,6 +12,12 @@ public class Participant {
     private Integer id;
     private String name;
     private String email;
+
+    @ManyToMany
+    @JoinTable(name = "participant_activity",
+            joinColumns = @JoinColumn(name = "participant_id"),
+            inverseJoinColumns = @JoinColumn(name = "activity_id"))
+    private Set<Activity> activities = new HashSet<>();
 
     public Participant(){
     }
