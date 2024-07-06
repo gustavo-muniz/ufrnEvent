@@ -21,6 +21,9 @@ public class Activity {
     @ManyToMany(mappedBy = "activities")
     private Set<Participant> participants = new HashSet<>();
 
+    @OneToMany(mappedBy = "activity")
+    private Set<Block> blocks = new HashSet<>();
+
     public Activity() {
     }
 
@@ -70,6 +73,14 @@ public class Activity {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Set<Participant> getParticipants() {
+        return participants;
+    }
+
+    public Set<Block> getBlocks() {
+        return blocks;
     }
 
     @Override
